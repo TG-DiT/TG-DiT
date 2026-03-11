@@ -39,21 +39,41 @@ The overall architecture of TG-DiT incorporates:
 3.  **Turbulence-Guided Loss:** A novel loss function that uses weak-turbulence results as physical anchors to prevent model hallucinations under strong turbulence ($D/r_0 > 3$).
 
 
-## 🛠️ Installation
+## 🛠️ Dependencies and Installation
 
+**Tested Environment:**
+- **OS:** Ubuntu 22.04 / Linux
+- **GPU:** NVIDIA RTX 5090 (or any modern NVIDIA GPU)
+- **Python:** 3.9.19
+- **PyTorch:** 2.8.0 (Compiled with CUDA 12.9)
+
+**Step 1: Create a conda environment**
+We strongly recommend using Conda to manage your Python environment to avoid version conflicts.
 ```bash
-git clone https://github.com/TG-DiT/TG-DiT.git
-cd TG-DiT
-pip install -r requirements.txt
-
+conda create -n tgdit python=3.9.19 -y
+conda activate tgdit
 ```
+**Step 2: Install PyTorch**
+⚠️ Important: You must install the PyTorch version that matches your GPU's CUDA compute capability.
+For our setup (RTX 5090), we used PyTorch 2.8.0 with CUDA 12.9. You can install it directly via pip, which automatically handles the required CUDA runtime binaries
+```bash
+pip install torch==2.8.0 torchvision==0.23.0 torchaudio==2.8.0 --index-url https://download.pytorch.org/whl/cu129
+```
+(Note: If you are using an older GPU like RTX 3090 or V100, please visit the PyTorch Official Website to generate the pip command for an older CUDA version, e.g., cu118 or cu121).
+**Step 3: Install other requirements**
+Once PyTorch is successfully installed, install the remaining lightweight dependencies :
+```bash
+pip install -r requirements.txt
+```
+
 ## ⬇️ Model Zoo
 
 Download the pre-trained models and place them in the `weights/` directory.
 
-| Model | Resolution | Steps | Link |
-| :--- | :---: | :---: | :---: |
-| **TG-DiT-XL/2** | 256x256 | 50 | [**HuggingFace**](https://huggingface.co/) (Coming Soon) |
+| Model | Resolution | Link |
+| :--- | :---: | :---: |
+| **TG-DiT-XL/2** | 256x256 | [**Google Drive**](https://drive.google.com/drive/folders/1_1IPlxWfe9dme3Lq43j_rRWp1uy4Cthh?usp=sharing)|
+
 
 
 ## ⚡ Inference
